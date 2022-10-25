@@ -20,27 +20,18 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <table>
+                <h1>Liste d'utilisateur</h1>
                 {this.state.users.map(user => 
-                  <tr>
-                    <td>
-                        {user.name}
-                    </td>
-                    <td>
-                        {user.firstname}
-                    </td>
-                    <td>
-                        {user.mail}
-                    </td>
-                    <td>
-                        {user.address}
-                    </td>
-                    <td>
-                        {user.phone}
-                    </td>
-                  </tr>  
+                    <div className="card" style={{"width": "18rem"}}>
+                        <div className="card-body">
+                            <p className="card-text">{user.name}</p>
+                            <p className="card-text">{user.firstname}</p>
+                            <p className="card-text">{user.mail}</p>
+                            <p className="card-text">{user.address}</p>
+                            <p className="card-text">{user.phone}</p>
+                        </div>
+                    </div>
                 )}
-                </table>
             </div>
             
         )
