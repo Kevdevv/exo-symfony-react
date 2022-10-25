@@ -17,6 +17,12 @@ class Home extends Component {
         })
     }
 
+     deleteUser(id) {
+         axios.delete(`http://localhost:8000/api/users/`+ id).then(users => {this.getUsers()})
+
+    }
+
+
     render() {
         return (
             <div>
@@ -29,6 +35,7 @@ class Home extends Component {
                             <p className="card-text">{user.mail}</p>
                             <p className="card-text">{user.address}</p>
                             <p className="card-text">{user.phone}</p>
+                            <button onClick={() => this.deleteUser(user.id)} type="button" class="btn btn-danger">Supprimer</button>
                         </div>
                     </div>
                 )}
