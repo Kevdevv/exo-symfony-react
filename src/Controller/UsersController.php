@@ -21,6 +21,28 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class UsersController extends AbstractController
 {
 
+    #[Route('/api/users/{id}', name:'showUser', methods: ['GET'])]
+    public function showUser(Request $request, SerializerInterface $serializer, ManagerRegistry $doctrine): JsonResponse
+    {
+        $usersRepository = $doctrine->getRepository(Users::class);
+        $user = $usersRepository->find($request->attributes->get('id'));
+
+        $encoders = [new XmlEncoder(), new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $jsonContent = $serializer->serialize($user, 'json');
+    
+        $response = new JsonResponse();
+
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent($jsonContent);
+        
+        return $response;
+    }
+
     #[Route('/api/users', name:'getUsers', methods: ['GET'])]
     public function getUsers(ManagerRegistry $doctrine)
     {
