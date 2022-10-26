@@ -27,11 +27,7 @@ class UsersController extends AbstractController
         $usersRepository = $doctrine->getRepository(Users::class);
         $user = $usersRepository->find($request->attributes->get('id'));
 
-        $encoders = [new XmlEncoder(), new JsonEncoder()];
-        $normalizers = [new ObjectNormalizer()];
-        $serializer = new Serializer($normalizers, $encoders);
-
-        $jsonContent = $serializer->serialize($user, 'json');
+        $jsonContent = $serializer->serialize($user, 'json', ['groups' => ['user','possessions']]);
     
         $response = new JsonResponse();
 

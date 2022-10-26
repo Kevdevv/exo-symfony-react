@@ -26,7 +26,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <h1>Liste d'utilisateur</h1>
+                <h1>Liste d'utilisateurs</h1>
                 {this.state.users.map(user => 
                     <div className="card" style={{"width": "18rem"}}>
                         <div className="card-body">
