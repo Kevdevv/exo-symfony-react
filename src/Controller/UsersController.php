@@ -40,16 +40,12 @@ class UsersController extends AbstractController
     }
 
     #[Route('/api/users', name:'getUsers', methods: ['GET'])]
-    public function getUsers(ManagerRegistry $doctrine)
+    public function getUsers(ManagerRegistry $doctrine, SerializerInterface $serializer)
     {
         $usersRepository = $doctrine->getRepository(Users::class);
         $users = $usersRepository->findAll();
 
-        $encoders = [new XmlEncoder(), new JsonEncoder()];
-        $normalizers = [new ObjectNormalizer()];
-        $serializer = new Serializer($normalizers, $encoders);
-
-        $jsonContent = $serializer->serialize($users, 'json');
+        $jsonContent = $serializer->serialize($users, 'json', ['groups' => ['user','possessions']]);
     
         $response = new Response();
 
@@ -64,11 +60,11 @@ class UsersController extends AbstractController
     #[Route('/api/users', name:'createUser', methods: ['POST'])]
     public function createUser(Request $request, SerializerInterface $serializer, EntityManagerInterface $em): JsonResponse 
     {
-        $users = $serializer->deserialize($request->getContent(), Users::class, 'json');
+        $users = $serializer->deserialize($request->getContent(), Users::class, 'json', ['groups' => ['user','possessions']]);
         $em->persist($users);
         $em->flush();
 
-        $jsonContent = $serializer->serialize($users, 'json');
+        $jsonContent = $serializer->serialize($users, 'json', ['groups' => ['user','possessions']]);
         
         $response = new JsonResponse();
 
