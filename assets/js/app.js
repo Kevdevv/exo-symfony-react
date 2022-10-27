@@ -16,4 +16,4 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Home from '../components/home'
 //ReactDOM.render(<Router><Home /></Router>, document.getElementById('root'));
 
-ReactDOM.render(<Home />, document.getElementById('root'));
+ReactDOM.render(<Router><Home /></Router>, document.getElementById('root'));
