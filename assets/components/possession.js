@@ -1,13 +1,33 @@
-import React, { Component } from "react";
+import { useParams } from "react-router-dom";
+import axios from 'axios';
+import { useEffect, useState } from 'react'
+import React from 'react'
 
-class Possession extends Component {
-    render() {
-        return (
+
+
+
+const possession = () => {
+    let { id } = useParams();
+    const client = axios.create({
+        baseURL: (`http://localhost:8000/api/users/` + id)
+    });
+
+    const [possession, setPossession] = useState([]);
+
+    useEffect(() => {
+        client.get().then((response) => {
+            setPossession(response.data.possessions);
+        });
+    }, []);
+
+    return (
         <div>
-            <h1>Hello, world</h1>
+            <h3>test</h3>
+            {possession.map((poss) => {
+                return <p>{poss.name}</p>
+            })}
         </div>
-            
-    )}
+    )
 }
 
-export default Possession;
+export default possession

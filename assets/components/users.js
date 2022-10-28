@@ -30,7 +30,7 @@ class Users extends Component {
                 {this.state.users.map(user =>
                     <div className="card" style={{ "width": "18rem" }}>
                         <div className="card-body">
-                            <Link to={"/possession/"}>
+                            <Link to={"possession/" + user.id}>
                                 <p className="card-text">{user.name}</p>
                             </Link>
                             <p className="card-text">{user.firstname}</p>
@@ -41,9 +41,6 @@ class Users extends Component {
                         </div>
                     </div>
                 )}
-
-
-
             </div>
 
         )

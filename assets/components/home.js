@@ -1,22 +1,19 @@
-// ./assets/js/components/Home.js
-
-import React, { Component } from 'react';
-import { Route, Routes, Navigate, Link, withRouter } from 'react-router-dom';
+import React from 'react'
+import { Route, Routes, Navigate, Link, withRouter, useParams } from 'react-router-dom';
 import Users from '../components/users';
 import Possession from '../components/possession';
+import axios from 'axios';
 
-class Home extends Component {
 
-    render() {
-        return (
-            <div>
-                <Routes>
-                    <Route path="/" element={<Users />} />
-                    <Route path="/possession" element={<Possession />} />
-                </Routes>
-            </div>
-        )
-    }
+const home = () => {
+  return (
+      <div>
+          <Routes>
+              <Route path="/" element={<Users />} />
+              <Route path="possession/:id" element={<Possession />} />
+          </Routes>
+      </div>
+  )
 }
 
-export default Home;
+export default home
