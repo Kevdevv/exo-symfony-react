@@ -22,10 +22,26 @@ const possession = () => {
 
     return (
         <div>
-            <h3>test</h3>
+            <h2>Possession de l'utilisateur</h2>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Valeur</th>
+                        <th scope="col">Type</th>
+
+                    </tr>
+                </thead>
+                <tbody>
             {possession.map((poss) => {
-                return <p>{poss.name}</p>
+                return <tr>
+                    <td>{poss.name}</td>
+                    <td>{poss.value}</td>
+                    <td>{poss.type}</td>
+                </tr>
             })}
+                </tbody>
+            </table>
         </div>
     )
 }
