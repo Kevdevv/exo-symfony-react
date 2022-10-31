@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { format } from 'date-fns'
 class Users extends Component {
     constructor() {
         super();
@@ -35,12 +36,13 @@ class Users extends Component {
                             <th scope="col">Mail</th>
                             <th scope="col">adresse</th>
                             <th scope="col">Téléphone</th>
-                            <th scope="col">delete</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Supprimer</th>
                         </tr>
                     </thead>
                     
                     <tbody>
-                        
+
                         {this.state.users.map((user) => {
                        return <tr>
                            <Link to={"possession/" + user.id}>                        
@@ -50,8 +52,8 @@ class Users extends Component {
                             <td>{user.mail}</td>
                             <td>{user.address}</td>
                             <td>{user.phone}</td>
+                           <td>{format(new Date(user.birthDate), 'yyyy/mm/dd')}</td>
                             <td><button onClick={() => this.deleteUser(user.id)} type="button" class="btn btn-danger">Supprimer</button></td>
-                            {console.log(user.name)}                           
                         </tr>
                          })}
                         </tbody>                   

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UsersRepository;
 use Doctrine\Common\Collections\Collection;
@@ -40,6 +41,10 @@ class Users
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Possessions::class)]
     #[Groups(['user'])]
     private Collection $possessions;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[Groups(['user', 'user_detail'])]
+    private ?\DateTimeInterface $birthDate = null;
 
     public function __construct()
     {
@@ -137,6 +142,18 @@ class Users
                 $possession->setUsers(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBirthDate(): ?\DateTimeInterface
+    {
+        return $this->birthDate;
+    }
+
+    public function setBirthDate(?\DateTimeInterface $birthDate): self
+    {
+        $this->birthDate = $birthDate;
 
         return $this;
     }
