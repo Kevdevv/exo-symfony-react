@@ -52,7 +52,7 @@ class Users extends Component {
                             <td>{user.mail}</td>
                             <td>{user.address}</td>
                             <td>{user.phone}</td>
-                           <td>{format(new Date(user.birthDate), 'yyyy/mm/dd')}</td>
+                           <td>{user.age}</td>
                             <td><button onClick={() => this.deleteUser(user.id)} type="button" class="btn btn-danger">Supprimer</button></td>
                         </tr>
                          })}

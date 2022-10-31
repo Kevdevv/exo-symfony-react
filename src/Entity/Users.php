@@ -45,6 +45,9 @@ class Users
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     #[Groups(['user', 'user_detail'])]
     private ?\DateTimeInterface $birthDate = null;
+    
+    #[Groups(['user', 'user_detail'])]
+    private ?int $age = null;
 
     public function __construct()
     {
@@ -154,6 +157,26 @@ class Users
     public function setBirthDate(?\DateTimeInterface $birthDate): self
     {
         $this->birthDate = $birthDate;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of age
+     */ 
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * Set the value of age
+     *
+     * @return  self
+     */ 
+    public function setAge(int $age)
+    {
+        $this->age = $age;
 
         return $this;
     }

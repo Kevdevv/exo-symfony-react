@@ -3,11 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Users;
+use App\Service\DateCalculate;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\HttpFoundation\Request;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -40,10 +41,12 @@ class UsersController extends AbstractController
     }
 
     #[Route('/api/users', name:'getUsers', methods: ['GET'])]
-    public function getUsers(ManagerRegistry $doctrine, SerializerInterface $serializer)
+    public function getUsers(ManagerRegistry $doctrine, SerializerInterface $serializer, DateCalculate $DateCalculate )
     {
         $usersRepository = $doctrine->getRepository(Users::class);
         $users = $usersRepository->findAll();
+
+        $DateCalculate->setAge($users);
 
         $jsonContent = $serializer->serialize($users, 'json', ['groups' => ['user','possessions']]);
     
@@ -53,8 +56,8 @@ class UsersController extends AbstractController
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
         $response->setContent($jsonContent);
-        
         return $response;
+        
     }
     
     #[Route('/api/users', name:'createUser', methods: ['POST'])]
