@@ -13,16 +13,22 @@ const possession = () => {
     });
 
     const [possession, setPossession] = useState([]);
+    const [user, setUser] = useState([]);
 
     useEffect(() => {
         client.get().then((response) => {
             setPossession(response.data.possessions);
+        });
+
+        client.get().then((response) => {
+            setUser(response.data);
         });
     }, []);
 
     return (
         <div>
             <h2>Possession de l'utilisateur</h2>
+            <h3>{user.name}</h3>
             <table className="table">
                 <thead>
                     <tr>
