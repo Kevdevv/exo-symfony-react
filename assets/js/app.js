@@ -14,8 +14,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Home from '../components/home'
-import FormModal from '../components/FormModal';
 
 //ReactDOM.render(<Router><Home /></Router>, document.getElementById('root'));
 
-ReactDOM.render(<Router><Home /><FormModal /></Router>, document.getElementById('root'));
+ReactDOM.render(<Router><Home /></Router>, document.getElementById('root'));

@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
+
 const FormModal = () => {
 
     const [show, setShow] = useState(false);
 
+
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    
     const [addFormData, setAddFormData] = useState();
 
     const handleAddFormChange = (event) => {
@@ -53,6 +56,7 @@ const FormModal = () => {
                     }
                 })
                 .then(data => {
+                    window.location.reload();
                 });
 
         } catch (err) {

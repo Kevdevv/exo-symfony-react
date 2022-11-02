@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import FormModal from '../components/FormModal';
+
 class Users extends Component {
     constructor() {
         super();
@@ -56,7 +58,8 @@ class Users extends Component {
                         </tr>
                          })}
                         </tbody>                   
-                 </table>                            
+                 </table>
+                <FormModal />                            
             </div>
 
         )
