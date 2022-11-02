@@ -29,6 +29,8 @@ const possession = () => {
         <div>
             <h2>Possession de l'utilisateur</h2>
             <h3>{user.name}</h3>
+            <p>{user.mail}</p>
+            <p>{user.phone}</p>
             <table className="table">
                 <thead>
                     <tr>
