@@ -45,7 +45,7 @@ class Users extends Component {
                     <tbody>
 
                         {this.state.users.map((user) => {
-                       return <tr>
+                       return <tr key={user.id}>
                            <Link to={"possession/" + user.id}>                        
                             <td>{user.name}</td>
                             </Link>
@@ -54,7 +54,7 @@ class Users extends Component {
                             <td>{user.address}</td>
                             <td>{user.phone}</td>
                             <td>{user.age}</td>
-                            <td><button onClick={() => this.deleteUser(user.id)} type="button" class="btn btn-danger">Supprimer</button></td>
+                            <td><button onClick={() => this.deleteUser(user.id)} type="button" className="btn btn-danger">Supprimer</button></td>
                         </tr>
                          })}
                         </tbody>                   

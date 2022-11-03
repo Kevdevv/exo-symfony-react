@@ -82,37 +82,32 @@ const FormModal = () => {
               <Modal.Body>
                   <form onSubmit={handleAddFormSubmit}>
                       <div className="mb-3">
-                          <label for="exampleInputEmail1" className="form-label">Email address</label>
+                          <label for="exampleInputEmail1" className="form-label">Email</label>
                           <input name="mail" type="email" className="form-control" id="1" aria-describedby="emailHelp" onChange={handleAddFormChange} />
                       </div>
                       <div className="mb-3">
-                          <label for="exampleInputPassword1" className="form-label">Name</label>
+                          <label for="exampleInputPassword1" className="form-label">Nom</label>
                           <input name="name" type="text" className="form-control" id="2" aria-describedby="emailHelp" onChange={handleAddFormChange} />
                       </div>
                       <div className="mb-3">
-                          <label for="exampleInputPassword1" className="form-label">Firstname</label>
+                          <label for="exampleInputPassword1" className="form-label">Prénom</label>
                           <input name="firstname" type="text" className="form-control" id="3" aria-describedby="emailHelp" onChange={handleAddFormChange} />
                       </div>
                       <div className="mb-3">
-                          <label for="exampleInputPassword1" className="form-label">Phone</label>
+                          <label for="exampleInputPassword1" className="form-label">Téléphone</label>
                           <input name="phone" type="text" className="form-control" id="4" aria-describedby="emailHelp" onChange={handleAddFormChange} />
                       </div>
                       <div className="mb-3">
-                          <label for="exampleInputPassword1" className="form-label">Address</label>
+                          <label for="exampleInputPassword1" className="form-label">Adresse</label>
                           <input name="address" type="text" className="form-control" id="5" aria-describedby="emailHelp" onChange={handleAddFormChange} />
                       </div>
                       <div className="mb-3">
-                          <label for="exampleInputPassword1" className="form-label">Date</label>
+                          <label for="exampleInputPassword1" className="form-label">Date de naissance</label>
                           <input name="birthDate" type="date" className="form-control" id="6" aria-describedby="emailHelp" onChange={handleAddFormChange} />
                       </div>
-                      <button type="submit" className="btn btn-primary">Submit</button>
+                      <button type="submit" className="btn btn-primary">Envoyer</button>
                   </form>
               </Modal.Body>
-              <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>
-                      Close
-                  </Button>
-              </Modal.Footer>
           </Modal>
       </>
   )

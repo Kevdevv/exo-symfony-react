@@ -42,7 +42,7 @@ const possession = () => {
                 </thead>
                 <tbody>
             {possession.map((poss) => {
-                return <tr>
+                return <tr key={poss.id}>
                     <td>{poss.name}</td>
                     <td>{poss.value}</td>
                     <td>{poss.type}</td>
