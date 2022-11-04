@@ -44,7 +44,7 @@ const possession = () => {
             {possession.map((poss) => {
                 return <tr key={poss.id}>
                     <td>{poss.name}</td>
-                    <td>{poss.value}</td>
+                    <td>{poss.value + '€'}</td>
                     <td>{poss.type}</td>
                 </tr>
             })}
