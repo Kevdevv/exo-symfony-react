@@ -6,8 +6,11 @@ import Modal from 'react-bootstrap/Modal';
 const FormModal = () => {
 
     const [show, setShow] = useState(false);
-    console.log('test')
-
+    console.log('conflict')
+    console.log('conflict')
+    console.log('conflict')
+    console.log('conflict')
+    console.log('conflict')
 
 
     const handleClose = () => setShow(false);
