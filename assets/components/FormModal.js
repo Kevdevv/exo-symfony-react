@@ -7,10 +7,6 @@ const FormModal = () => {
 
     const [show, setShow] = useState(false);
     console.log('b')
-    console.log('b')
-    console.log('b')
-    console.log('bonflict')
-    console.log('bonflict')
 
 
     const handleClose = () => setShow(false);
