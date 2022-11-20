@@ -29,14 +29,14 @@ class UsersController extends AbstractController
         $user = $usersRepository->find($request->attributes->get('id'));
 
         $jsonContent = $serializer->serialize($user, 'json', ['groups' => ['user','possessions']]);
-    
+
         $response = new JsonResponse();
 
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
         $response->setContent($jsonContent);
-        
+
         return $response;
     }
 
@@ -49,7 +49,7 @@ class UsersController extends AbstractController
         $DateCalculate->setAge($users);
 
         $jsonContent = $serializer->serialize($users, 'json', ['groups' => ['user','possessions']]);
-    
+
         $response = new Response();
 
         $response->headers->set('Content-Type', 'application/json');
@@ -57,30 +57,30 @@ class UsersController extends AbstractController
 
         $response->setContent($jsonContent);
         return $response;
-        
+
     }
-    
+
     #[Route('/api/users', name:'createUser', methods: ['POST'])]
-    public function createUser(Request $request, SerializerInterface $serializer, EntityManagerInterface $em): JsonResponse 
+    public function createUser(Request $request, SerializerInterface $serializer, EntityManagerInterface $em): JsonResponse
     {
         $users = $serializer->deserialize($request->getContent(), Users::class, 'json', ['groups' => ['user','possessions']]);
         $em->persist($users);
         $em->flush();
 
         $jsonContent = $serializer->serialize($users, 'json', ['groups' => ['user','possessions']]);
-        
+
         $response = new JsonResponse();
 
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
         $response->setContent($jsonContent);
-        
+
         return $response;
    }
 
    #[Route('/api/users/{id}', name: 'deleteUser', methods: ['DELETE'])]
-    public function deleteUser(Users $users, EntityManagerInterface $em): JsonResponse 
+    public function deleteUser(Users $users, EntityManagerInterface $em): JsonResponse
     {
         $em->remove($users);
         $em->flush();
