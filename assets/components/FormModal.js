@@ -7,6 +7,10 @@ const FormModal = () => {
 
     const [show, setShow] = useState(false);
     console.log('a')
+    console.log('a')
+    console.log('a')
+    console.log('a')
+    console.log('a')
 
 
     const handleClose = () => setShow(false);
