@@ -4,5 +4,5 @@ const Test = () => {
   console.log("conflict")
   console.log("conflict")
   console.log("test")
-  console.log("test")
+  console.log("conflict")
 }
