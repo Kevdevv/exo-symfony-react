@@ -6,12 +6,12 @@ import Modal from 'react-bootstrap/Modal';
 const FormModal = () => {
 
     const [show, setShow] = useState(false);
-
+    console.log('conflit')
 
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    
+
     const [addFormData, setAddFormData] = useState();
 
     const handleAddFormChange = (event) => {
